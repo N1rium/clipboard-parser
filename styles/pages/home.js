@@ -118,3 +118,12 @@ export const Toast = styled.div`
       transform: translateY(0%);
     `}
 `;
+
+export const Version = styled.div`
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  color: var(--secondary-text-color);
+  font-size: 0.8em;
+  font-weight: bold;
+`;

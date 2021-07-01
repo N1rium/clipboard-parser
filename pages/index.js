@@ -11,6 +11,7 @@ import {
   WindowContent,
   Tab,
   Toast,
+  Version,
 } from '@/styles/pages/home';
 import { copyToClipboard } from '@/utils/clipboard';
 
@@ -90,6 +91,7 @@ export default function App() {
         </div>
       </Wrapper>
       <Toast active={showToast}>Copied to clipboard!</Toast>
+      <Version>v0.1</Version>
     </div>
   );
 }
