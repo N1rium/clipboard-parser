@@ -11,6 +11,7 @@ import {
   WindowContent,
   Tab,
   Toast,
+  Toolbar,
   Version,
 } from '@/styles/pages/home';
 import { copyToClipboard } from '@/utils/clipboard';
@@ -19,6 +20,9 @@ export default function App() {
   const [data, setData] = useState(null);
   const [index, setIndex] = useState(0);
   const [showToast, setShowToast] = useState(false);
+  const [htmlConfig, setHtmlConfig] = useState({
+    preview: false,
+  });
 
   useEffect(() => {
     document.addEventListener('paste', (e) => {
@@ -32,6 +36,7 @@ export default function App() {
         };
       });
 
+      setHtmlConfig({ preview: false });
       setData(data_by_type);
     });
   }, []);
@@ -53,41 +58,64 @@ export default function App() {
             </h1>
             <p>Paste (Ctrl+V, ⌘V) anywhere!</p>
           </Info>
-          <WindowWrapper>
-            <WindowHeader>
-              {data &&
-                data.map((content, i) => (
+          {data && (
+            <WindowWrapper>
+              <WindowHeader>
+                {data.map((content, i) => (
                   <Tab key={i} active={i === index} onClick={() => setIndex(i)}>
                     {content.type}
                   </Tab>
                 ))}
-            </WindowHeader>
-            <Window>
-              <WindowContentWrapper>
-                {/* {data && (
+              </WindowHeader>
+              <Window>
+                <WindowContentWrapper>
+                  {/* {data && (
                   <WindowContent
                     dangerouslySetInnerHTML={{
                       __html: data[index].data,
                     }}
                   />
                 )} */}
-                {data && data[index].data}
-              </WindowContentWrapper>
-              <WindowFooter>
-                <i
-                  aria-hidden
-                  className="fas fa-copy"
-                  onClick={() => {
-                    copyToClipboard(data[index].data);
-                    setShowToast(true);
-                    setTimeout(() => {
-                      setShowToast(false);
-                    }, 2500);
-                  }}
-                ></i>
-              </WindowFooter>
-            </Window>
-          </WindowWrapper>
+                  {data[index].type === 'text/html' && htmlConfig.preview === true ? (
+                    <WindowContent
+                      dangerouslySetInnerHTML={{
+                        __html: data[index].data,
+                      }}
+                    />
+                  ) : (
+                    data[index].data
+                  )}
+                </WindowContentWrapper>
+                <WindowFooter>
+                  <div>
+                    {data[index].type === 'text/html' && (
+                      <Toolbar>
+                        <h6>Preview</h6>
+                        <input
+                          type="checkbox"
+                          value={htmlConfig.preview}
+                          onChange={() => setHtmlConfig({ ...htmlConfig, preview: !htmlConfig.preview })}
+                        />
+                      </Toolbar>
+                    )}
+                  </div>
+                  <div>
+                    <i
+                      aria-hidden
+                      className="fas fa-copy"
+                      onClick={() => {
+                        copyToClipboard(data[index].data);
+                        setShowToast(true);
+                        setTimeout(() => {
+                          setShowToast(false);
+                        }, 2500);
+                      }}
+                    ></i>
+                  </div>
+                </WindowFooter>
+              </Window>
+            </WindowWrapper>
+          )}
         </div>
       </Wrapper>
       <Toast active={showToast}>Copied to clipboard!</Toast>

@@ -39,6 +39,7 @@ export const Tab = styled.div`
   cursor: pointer;
   background: var(--bg-2);
   transition: all 0.225s ease-in-out;
+  user-select: none;
 
   ${(props) =>
     props.active &&
@@ -71,7 +72,7 @@ export const WindowContent = styled.div``;
 export const WindowFooter = styled.footer`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0.5em 1em;
   background: var(--bg-3);
   box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.25);
@@ -81,6 +82,11 @@ export const WindowFooter = styled.footer`
     color: #fff;
     cursor: pointer;
   }
+`;
+
+export const Toolbar = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Button = styled.div`
