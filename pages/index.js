@@ -3,12 +3,10 @@ import Head from 'next/head';
 import {
   Wrapper,
   Info,
-  WindowWrapper,
   Window,
   WindowHeader,
   WindowFooter,
   WindowContentWrapper,
-  WindowContent,
   Tab,
   Toast,
   Toolbar,
@@ -57,7 +55,7 @@ export default function App() {
             <p>Paste (Ctrl+V, ⌘V) anywhere!</p>
           </Info>
           {data && (
-            <WindowWrapper>
+            <div>
               <WindowHeader>
                 {data.map((content, i) => (
                   <Tab key={i} active={i === index} onClick={() => setIndex(i)}>
@@ -68,7 +66,7 @@ export default function App() {
               <Window>
                 <WindowContentWrapper>
                   {data[index].type === 'text/html' && htmlConfig.preview === true ? (
-                    <WindowContent
+                    <div
                       dangerouslySetInnerHTML={{
                         __html: data[index].data,
                       }}
@@ -105,7 +103,7 @@ export default function App() {
                   </div>
                 </WindowFooter>
               </Window>
-            </WindowWrapper>
+            </div>
           )}
         </div>
       </Wrapper>

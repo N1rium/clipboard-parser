@@ -20,7 +20,6 @@ export const Info = styled.div`
   }
 `;
 
-export const WindowWrapper = styled.div``;
 export const Window = styled.div`
   resize: both;
   width: 640px;
@@ -74,8 +73,6 @@ export const WindowContentWrapper = styled.div`
   flex: 1 1 auto;
   overflow: auto;
 `;
-
-export const WindowContent = styled.div``;
 
 export const WindowFooter = styled.footer`
   display: flex;
