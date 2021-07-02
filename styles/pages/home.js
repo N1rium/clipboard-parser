@@ -10,6 +10,14 @@ export const Wrapper = styled.div`
 
 export const Info = styled.div`
   text-align: center;
+  h1 {
+    &:before {
+      content: '<';
+    }
+    &:after {
+      content: '/>';
+    }
+  }
 `;
 
 export const WindowWrapper = styled.div``;

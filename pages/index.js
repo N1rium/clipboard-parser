@@ -53,9 +53,7 @@ export default function App() {
       <Wrapper>
         <div>
           <Info>
-            <h1>
-              {'<'}Clipboard parser{'/>'}
-            </h1>
+            <h1>Clipboard parser</h1>
             <p>Paste (Ctrl+V, ⌘V) anywhere!</p>
           </Info>
           {data && (
