@@ -67,13 +67,6 @@ export default function App() {
               </WindowHeader>
               <Window>
                 <WindowContentWrapper>
-                  {/* {data && (
-                  <WindowContent
-                    dangerouslySetInnerHTML={{
-                      __html: data[index].data,
-                    }}
-                  />
-                )} */}
                   {data[index].type === 'text/html' && htmlConfig.preview === true ? (
                     <WindowContent
                       dangerouslySetInnerHTML={{
