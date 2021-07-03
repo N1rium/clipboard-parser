@@ -43,6 +43,7 @@ export default function App() {
     <div id="main-content">
       <Head>
         <title>Clipboard parser</title>
+        <meta name="google-site-verification" content="JGEGEMBfrzav1YzNA5WE5ILEG4puFIHFl07O9UmstZI" />
         <meta
           name="description"
           content="Inspect the contents of your clipboard. Simply paste and explore whatever you've copied!"
